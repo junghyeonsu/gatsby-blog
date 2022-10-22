@@ -1,6 +1,8 @@
 import type { HeadFC } from "gatsby";
 import React from "react";
 
+import Layout from "../components/Layout";
+
 interface ContentTemplateProps {
   children: React.ReactNode;
   pageContext: {
@@ -13,18 +15,20 @@ interface ContentTemplateProps {
 const ContentTemplate: React.FC<ContentTemplateProps> = ({ children }) => {
   return (
     <main>
-      <section
-        style={{
-          maxWidth: "800px",
-          margin: "50px auto",
-          wordBreak: "keep-all",
-          overflowWrap: "break-word",
-          lineHeight: "1.7",
-          letterSpacing: "-0.04px",
-        }}
-      >
-        {children}
-      </section>
+      <Layout>
+        <section
+          style={{
+            maxWidth: "800px",
+            margin: "50px auto",
+            wordBreak: "keep-all",
+            overflowWrap: "break-word",
+            lineHeight: "1.7",
+            letterSpacing: "-0.04px",
+          }}
+        >
+          {children}
+        </section>
+      </Layout>
     </main>
   );
 };

@@ -74,5 +74,22 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "@chakra-ui/gatsby-plugin",
+      options: {
+        resetCSS: true,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Pretendard"],
+          urls: [
+            "https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css",
+          ],
+        },
+      },
+    },
   ],
 };
