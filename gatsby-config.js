@@ -62,6 +62,13 @@ module.exports = {
         path: path.resolve(__dirname, "./content"),
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `categories`,
+        path: path.resolve(__dirname, "./content/"),
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",

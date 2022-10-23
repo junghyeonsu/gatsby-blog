@@ -663,7 +663,50 @@ enum FileFieldsEnum {
   childMdx___children___parent___children
   childMdx___children___parent___id
   childMdx___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___frontmatter___createdAt
+  childMdx___frontmatter___description
   childMdx___frontmatter___slug
+  childMdx___frontmatter___tags
+  childMdx___frontmatter___thumbnail___absolutePath
+  childMdx___frontmatter___thumbnail___accessTime
+  childMdx___frontmatter___thumbnail___atime
+  childMdx___frontmatter___thumbnail___atimeMs
+  childMdx___frontmatter___thumbnail___base
+  childMdx___frontmatter___thumbnail___birthTime
+  childMdx___frontmatter___thumbnail___birthtime
+  childMdx___frontmatter___thumbnail___birthtimeMs
+  childMdx___frontmatter___thumbnail___blksize
+  childMdx___frontmatter___thumbnail___blocks
+  childMdx___frontmatter___thumbnail___changeTime
+  childMdx___frontmatter___thumbnail___children
+  childMdx___frontmatter___thumbnail___childrenImageSharp
+  childMdx___frontmatter___thumbnail___childrenMdx
+  childMdx___frontmatter___thumbnail___ctime
+  childMdx___frontmatter___thumbnail___ctimeMs
+  childMdx___frontmatter___thumbnail___dev
+  childMdx___frontmatter___thumbnail___dir
+  childMdx___frontmatter___thumbnail___ext
+  childMdx___frontmatter___thumbnail___extension
+  childMdx___frontmatter___thumbnail___gid
+  childMdx___frontmatter___thumbnail___id
+  childMdx___frontmatter___thumbnail___ino
+  childMdx___frontmatter___thumbnail___mode
+  childMdx___frontmatter___thumbnail___modifiedTime
+  childMdx___frontmatter___thumbnail___mtime
+  childMdx___frontmatter___thumbnail___mtimeMs
+  childMdx___frontmatter___thumbnail___name
+  childMdx___frontmatter___thumbnail___nlink
+  childMdx___frontmatter___thumbnail___prettySize
+  childMdx___frontmatter___thumbnail___publicURL
+  childMdx___frontmatter___thumbnail___rdev
+  childMdx___frontmatter___thumbnail___relativeDirectory
+  childMdx___frontmatter___thumbnail___relativePath
+  childMdx___frontmatter___thumbnail___root
+  childMdx___frontmatter___thumbnail___size
+  childMdx___frontmatter___thumbnail___sourceInstanceName
+  childMdx___frontmatter___thumbnail___uid
+  childMdx___frontmatter___title
+  childMdx___frontmatter___updatedAt
   childMdx___id
   childMdx___internal___content
   childMdx___internal___contentDigest
@@ -784,7 +827,50 @@ enum FileFieldsEnum {
   childrenMdx___children___parent___children
   childrenMdx___children___parent___id
   childrenMdx___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___frontmatter___createdAt
+  childrenMdx___frontmatter___description
   childrenMdx___frontmatter___slug
+  childrenMdx___frontmatter___tags
+  childrenMdx___frontmatter___thumbnail___absolutePath
+  childrenMdx___frontmatter___thumbnail___accessTime
+  childrenMdx___frontmatter___thumbnail___atime
+  childrenMdx___frontmatter___thumbnail___atimeMs
+  childrenMdx___frontmatter___thumbnail___base
+  childrenMdx___frontmatter___thumbnail___birthTime
+  childrenMdx___frontmatter___thumbnail___birthtime
+  childrenMdx___frontmatter___thumbnail___birthtimeMs
+  childrenMdx___frontmatter___thumbnail___blksize
+  childrenMdx___frontmatter___thumbnail___blocks
+  childrenMdx___frontmatter___thumbnail___changeTime
+  childrenMdx___frontmatter___thumbnail___children
+  childrenMdx___frontmatter___thumbnail___childrenImageSharp
+  childrenMdx___frontmatter___thumbnail___childrenMdx
+  childrenMdx___frontmatter___thumbnail___ctime
+  childrenMdx___frontmatter___thumbnail___ctimeMs
+  childrenMdx___frontmatter___thumbnail___dev
+  childrenMdx___frontmatter___thumbnail___dir
+  childrenMdx___frontmatter___thumbnail___ext
+  childrenMdx___frontmatter___thumbnail___extension
+  childrenMdx___frontmatter___thumbnail___gid
+  childrenMdx___frontmatter___thumbnail___id
+  childrenMdx___frontmatter___thumbnail___ino
+  childrenMdx___frontmatter___thumbnail___mode
+  childrenMdx___frontmatter___thumbnail___modifiedTime
+  childrenMdx___frontmatter___thumbnail___mtime
+  childrenMdx___frontmatter___thumbnail___mtimeMs
+  childrenMdx___frontmatter___thumbnail___name
+  childrenMdx___frontmatter___thumbnail___nlink
+  childrenMdx___frontmatter___thumbnail___prettySize
+  childrenMdx___frontmatter___thumbnail___publicURL
+  childrenMdx___frontmatter___thumbnail___rdev
+  childrenMdx___frontmatter___thumbnail___relativeDirectory
+  childrenMdx___frontmatter___thumbnail___relativePath
+  childrenMdx___frontmatter___thumbnail___root
+  childrenMdx___frontmatter___thumbnail___size
+  childrenMdx___frontmatter___thumbnail___sourceInstanceName
+  childrenMdx___frontmatter___thumbnail___uid
+  childrenMdx___frontmatter___title
+  childrenMdx___frontmatter___updatedAt
   childrenMdx___id
   childrenMdx___internal___content
   childrenMdx___internal___contentDigest
@@ -1582,7 +1668,79 @@ enum MdxFieldsEnum {
   children___parent___parent___children
   children___parent___parent___id
   excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___createdAt
+  frontmatter___description
   frontmatter___slug
+  frontmatter___tags
+  frontmatter___thumbnail___absolutePath
+  frontmatter___thumbnail___accessTime
+  frontmatter___thumbnail___atime
+  frontmatter___thumbnail___atimeMs
+  frontmatter___thumbnail___base
+  frontmatter___thumbnail___birthTime
+  frontmatter___thumbnail___birthtime
+  frontmatter___thumbnail___birthtimeMs
+  frontmatter___thumbnail___blksize
+  frontmatter___thumbnail___blocks
+  frontmatter___thumbnail___changeTime
+  frontmatter___thumbnail___childImageSharp___children
+  frontmatter___thumbnail___childImageSharp___gatsbyImageData @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___thumbnail___childImageSharp___id
+  frontmatter___thumbnail___childMdx___body
+  frontmatter___thumbnail___childMdx___children
+  frontmatter___thumbnail___childMdx___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___thumbnail___childMdx___id
+  frontmatter___thumbnail___childMdx___tableOfContents @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___thumbnail___children
+  frontmatter___thumbnail___childrenImageSharp
+  frontmatter___thumbnail___childrenImageSharp___children
+  frontmatter___thumbnail___childrenImageSharp___gatsbyImageData @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___thumbnail___childrenImageSharp___id
+  frontmatter___thumbnail___childrenMdx
+  frontmatter___thumbnail___childrenMdx___body
+  frontmatter___thumbnail___childrenMdx___children
+  frontmatter___thumbnail___childrenMdx___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___thumbnail___childrenMdx___id
+  frontmatter___thumbnail___childrenMdx___tableOfContents @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  frontmatter___thumbnail___children___children
+  frontmatter___thumbnail___children___id
+  frontmatter___thumbnail___ctime
+  frontmatter___thumbnail___ctimeMs
+  frontmatter___thumbnail___dev
+  frontmatter___thumbnail___dir
+  frontmatter___thumbnail___ext
+  frontmatter___thumbnail___extension
+  frontmatter___thumbnail___gid
+  frontmatter___thumbnail___id
+  frontmatter___thumbnail___ino
+  frontmatter___thumbnail___internal___content
+  frontmatter___thumbnail___internal___contentDigest
+  frontmatter___thumbnail___internal___contentFilePath
+  frontmatter___thumbnail___internal___description
+  frontmatter___thumbnail___internal___fieldOwners
+  frontmatter___thumbnail___internal___ignoreType
+  frontmatter___thumbnail___internal___mediaType
+  frontmatter___thumbnail___internal___owner
+  frontmatter___thumbnail___internal___type
+  frontmatter___thumbnail___mode
+  frontmatter___thumbnail___modifiedTime
+  frontmatter___thumbnail___mtime
+  frontmatter___thumbnail___mtimeMs
+  frontmatter___thumbnail___name
+  frontmatter___thumbnail___nlink
+  frontmatter___thumbnail___parent___children
+  frontmatter___thumbnail___parent___id
+  frontmatter___thumbnail___prettySize
+  frontmatter___thumbnail___publicURL
+  frontmatter___thumbnail___rdev
+  frontmatter___thumbnail___relativeDirectory
+  frontmatter___thumbnail___relativePath
+  frontmatter___thumbnail___root
+  frontmatter___thumbnail___size
+  frontmatter___thumbnail___sourceInstanceName
+  frontmatter___thumbnail___uid
+  frontmatter___title
+  frontmatter___updatedAt
   id
   internal___content
   internal___contentDigest
@@ -1653,11 +1811,23 @@ input MdxFilterListInput {
 }
 
 type MdxFrontmatter {
+  createdAt: String
+  description: String
   slug: String
+  tags: [String]
+  thumbnail: File
+  title: String
+  updatedAt: String
 }
 
 input MdxFrontmatterFilterInput {
+  createdAt: StringQueryOperatorInput
+  description: StringQueryOperatorInput
   slug: StringQueryOperatorInput
+  tags: StringQueryOperatorInput
+  thumbnail: FileFilterInput
+  title: StringQueryOperatorInput
+  updatedAt: StringQueryOperatorInput
 }
 
 type MdxGroupConnection {

@@ -10,6 +10,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
           id
           frontmatter {
             slug
+            tags
           }
           internal {
             contentFilePath
@@ -24,9 +25,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       path: node.frontmatter.slug,
       component: `${contentTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
+        tags: node.frontmatter.tags,
         id: node.id,
-        slug: node.frontmatter.slug,
-        allMdx: result.data.allMdx,
       },
     });
   });
