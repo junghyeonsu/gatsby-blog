@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 interface PostContentTitleProps {
-  post: GatsbyTypes.ContentTemplateQuery["post"];
+  post: GatsbyTypes.PostTemplateQuery["post"];
 }
 
 const PostContentTitle = ({ post }: PostContentTitleProps) => {
@@ -15,6 +15,7 @@ const PostContentTitle = ({ post }: PostContentTitleProps) => {
       display="flex"
       flexDirection="column"
       alignItems="baseline"
+      marginBottom={100}
     >
       <Heading as="h1" fontSize={36} marginBottom="3" fontWeight={900}>
         {post?.frontmatter?.title}
@@ -29,10 +30,19 @@ const PostContentTitle = ({ post }: PostContentTitleProps) => {
         {/* <Badge fontSize="14px">{`${readingTime} minutes`}</Badge> */}
         <Badge fontSize="14px">{`10 minutes`}</Badge>
       </Box>
-      <GatsbyImage
-        image={post?.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!}
-        alt={post?.frontmatter?.title!}
-      />
+      <Box
+        display="flex"
+        width="100%"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <GatsbyImage
+          image={
+            post?.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!
+          }
+          alt={post?.frontmatter?.title!}
+        />
+      </Box>
     </Box>
   );
 };

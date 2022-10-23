@@ -1,14 +1,14 @@
-import { Grid, GridItem, Heading } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Heading } from "@chakra-ui/react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 interface RelatedPostsProps {
-  relatedPosts: GatsbyTypes.ContentTemplateQuery["relatedPosts"];
+  relatedPosts: GatsbyTypes.PostTemplateQuery["relatedPosts"];
 }
 
 const RelatedPosts = ({ relatedPosts }: RelatedPostsProps) => {
   return (
-    <div>
+    <Box marginBottom={100} marginTop={100}>
       <Heading as="h2" fontSize={36}>
         Related Posts
       </Heading>
@@ -26,7 +26,7 @@ const RelatedPosts = ({ relatedPosts }: RelatedPostsProps) => {
           </GridItem>
         ))}
       </Grid>
-    </div>
+    </Box>
   );
 };
 
