@@ -3523,7 +3523,7 @@ type ContentTemplateQueryVariables = Exact<{
 }>;
 
 
-type ContentTemplateQuery = { readonly post: { readonly frontmatter: { readonly createdAt: string | null, readonly description: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly slug: string | null, readonly title: string | null, readonly updatedAt: string | null, readonly thumbnail: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null, readonly relatedPosts: { readonly nodes: ReadonlyArray<{ readonly frontmatter: { readonly tags: ReadonlyArray<string | null> | null, readonly slug: string | null, readonly thumbnail: { readonly childImageSharp: { readonly resize: { readonly src: string | null, readonly width: number | null, readonly height: number | null } | null } | null } | null } | null }> } };
+type ContentTemplateQuery = { readonly post: { readonly frontmatter: { readonly createdAt: string | null, readonly description: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly slug: string | null, readonly title: string | null, readonly updatedAt: string | null, readonly thumbnail: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null, readonly relatedPosts: { readonly nodes: ReadonlyArray<{ readonly frontmatter: { readonly tags: ReadonlyArray<string | null> | null, readonly title: string | null, readonly slug: string | null, readonly thumbnail: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null }> } };
 
 type ContentsQueryVariables = Exact<{ [key: string]: never; }>;
 

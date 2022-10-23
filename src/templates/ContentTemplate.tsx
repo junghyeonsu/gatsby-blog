@@ -4,6 +4,7 @@ import React from "react";
 
 import Layout from "../components/Layout";
 import PostContentTitle from "../components/PostContentTitle";
+import RelatedPosts from "../components/RelatedPosts";
 
 export const query = graphql`
   query ContentTemplate($id: String!, $tags: [String!]!) {
@@ -30,14 +31,11 @@ export const query = graphql`
       nodes {
         frontmatter {
           tags
+          title
           slug
           thumbnail {
             childImageSharp {
-              resize {
-                src
-                width
-                height
-              }
+              gatsbyImageData
             }
           }
         }
@@ -72,6 +70,7 @@ const ContentTemplate: React.FC<ContentTemplateProps> = ({
         >
           <PostContentTitle post={data.post} />
           {children}
+          <RelatedPosts relatedPosts={data.relatedPosts} />
         </section>
       </Layout>
     </main>
