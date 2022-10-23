@@ -2,8 +2,9 @@ import type { HeadFC } from "gatsby";
 import { graphql } from "gatsby";
 import React from "react";
 
-import Layout from "../components/Layout";
+import Giscus from "../components/Giscus";
 import PostContentTitle from "../components/PostContentTitle";
+import PostLayout from "../components/PostLayout";
 import RelatedPosts from "../components/RelatedPosts";
 
 export const query = graphql`
@@ -57,7 +58,7 @@ const ContentTemplate: React.FC<ContentTemplateProps> = ({
 
   return (
     <main>
-      <Layout>
+      <PostLayout>
         <section
           style={{
             maxWidth: "800px",
@@ -71,8 +72,9 @@ const ContentTemplate: React.FC<ContentTemplateProps> = ({
           <PostContentTitle post={data.post} />
           {children}
           <RelatedPosts relatedPosts={data.relatedPosts} />
+          <Giscus />
         </section>
-      </Layout>
+      </PostLayout>
     </main>
   );
 };

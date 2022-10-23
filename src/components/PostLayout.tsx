@@ -26,6 +26,6 @@ const customComponents = {
   ),
 };
 
-export default function Layout({ children }: LayoutProps) {
+export default function PostLayout({ children }: LayoutProps) {
   return <MDXProvider components={customComponents}>{children}</MDXProvider>;
 }
