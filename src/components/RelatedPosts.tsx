@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 interface RelatedPostsProps {
-  relatedPosts: GatsbyTypes.PostTemplateQuery["relatedPosts"];
+  relatedPosts: GatsbyTypes.PostPageQuery["relatedPosts"];
 }
 
 const RelatedPosts = ({ relatedPosts }: RelatedPostsProps) => {

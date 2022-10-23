@@ -8,7 +8,7 @@ import PostLayout from "../components/PostLayout";
 import RelatedPosts from "../components/RelatedPosts";
 
 export const query = graphql`
-  query PostTemplate($id: String!, $tags: [String!]!) {
+  query PostPage($id: String!, $tags: [String!]!) {
     post: mdx(id: { eq: $id }) {
       frontmatter {
         createdAt
@@ -47,12 +47,10 @@ export const query = graphql`
 
 interface PostTemplateProps {
   children: React.ReactNode;
-  data: GatsbyTypes.PostTemplateQuery;
+  data: GatsbyTypes.PostPageQuery;
 }
 
 const PostTemplate: React.FC<PostTemplateProps> = ({ children, data }) => {
-  console.log("data", data);
-
   return (
     <main>
       <PostLayout>

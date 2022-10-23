@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 interface PostContentTitleProps {
-  post: GatsbyTypes.PostTemplateQuery["post"];
+  post: GatsbyTypes.PostPageQuery["post"];
 }
 
 const PostContentTitle = ({ post }: PostContentTitleProps) => {
