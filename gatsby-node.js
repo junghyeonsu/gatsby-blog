@@ -1,11 +1,12 @@
 const path = require("path");
 
-const postTemplate = path.resolve(`./src/templates/PostTemplate.tsx`);
+const postTemplate = path.resolve(`./src/templates/post.tsx`);
+const tagsTemplate = path.resolve(`./src/templates/tags.tsx`);
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
     query {
-      allMdx {
+      allPosts: allMdx {
         nodes {
           id
           frontmatter {
@@ -17,16 +18,34 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
           }
         }
       }
+
+      allTags: allMdx {
+        group(field: frontmatter___tags) {
+          tag: fieldValue
+        }
+      }
     }
   `);
 
-  result.data.allMdx.nodes.forEach((node) => {
+  // 모든 포스트 페이지 생성
+  result.data.allPosts.nodes.forEach((node) => {
     createPage({
-      path: node.frontmatter.slug,
+      path: `/posts/${node.frontmatter.slug}`,
       component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
         tags: node.frontmatter.tags,
         id: node.id,
+      },
+    });
+  });
+
+  // 태그 페이지 생성
+  result.data.allTags.group.forEach(({ tag }) => {
+    createPage({
+      path: `/tags/${tag}`,
+      component: tagsTemplate,
+      context: {
+        tag,
       },
     });
   });

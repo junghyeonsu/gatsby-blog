@@ -19,10 +19,7 @@ const Giscus = (): JSX.Element => {
     script.setAttribute("data-emit-metadata", "0");
     script.setAttribute("data-input-position", "bottom");
     script.setAttribute("data-lang", "ko");
-    script.setAttribute(
-      "data-theme",
-      colorMode === "dark" ? "dark_dimmed" : "light_protanopia",
-    );
+    script.setAttribute("data-theme", colorMode === "dark" ? "dark_dimmed" : "light_protanopia");
     script.setAttribute("crossorigin", "anonymous");
     script.async = true;
 

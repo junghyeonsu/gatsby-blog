@@ -2,7 +2,7 @@ const path = require(`path`);
 
 const SITE_METADATA = Object.freeze({
   title: "junghyeonsu.dev",
-  siteUrl: `https://www.yourdomain.tld`, // TODO:
+  siteUrl: process.env.URL, // TODO:
 });
 
 const wrapESMPlugin = (name) =>

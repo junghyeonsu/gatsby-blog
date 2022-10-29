@@ -1,4 +1,5 @@
-import { Badge, Box, Heading } from "@chakra-ui/react";
+import { Badge, Box, Flex, Heading } from "@chakra-ui/react";
+import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
@@ -20,26 +21,20 @@ const PostContentTitle = ({ post }: PostContentTitleProps) => {
       <Heading as="h1" fontSize={36} marginBottom="3" fontWeight={900}>
         {post?.frontmatter?.title}
       </Heading>
-      <Box display="flex" columnGap="10px" rowGap="10px" flexWrap="wrap">
+      <Flex columnGap="10px" rowGap="10px" alignItems="end" flexWrap="wrap">
         <Badge fontSize="14px">{post?.frontmatter?.createdAt}</Badge>
         {post?.frontmatter?.tags?.map((tag) => (
-          <Badge key={tag} fontSize="14px">
-            {tag}
-          </Badge>
+          <Link key={tag} to={`/tags/${tag}`}>
+            <Badge fontSize="14px">{tag}</Badge>
+          </Link>
         ))}
         {/* <Badge fontSize="14px">{`${readingTime} minutes`}</Badge> */}
         <Badge fontSize="14px">{`10 minutes`}</Badge>
-      </Box>
-      <Box
-        display="flex"
-        width="100%"
-        justifyContent="center"
-        alignItems="center"
-      >
+      </Flex>
+
+      <Box display="flex" width="100%" justifyContent="center" alignItems="center">
         <GatsbyImage
-          image={
-            post?.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!
-          }
+          image={post?.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!}
           alt={post?.frontmatter?.title!}
         />
       </Box>

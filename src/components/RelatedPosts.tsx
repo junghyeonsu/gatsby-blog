@@ -18,9 +18,7 @@ const RelatedPosts = ({ relatedPosts }: RelatedPostsProps) => {
             <h1>{post?.frontmatter?.title}</h1>
             <h1>{post?.frontmatter?.slug}</h1>
             <GatsbyImage
-              image={
-                post?.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!
-              }
+              image={post?.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!}
               alt={post?.frontmatter?.title!}
             />
           </GridItem>
