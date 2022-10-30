@@ -1,23 +1,16 @@
-import { Badge, Box, Flex, Heading } from "@chakra-ui/react";
+import { Badge, Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 interface PostContentTitleProps {
+  readingTime: string;
   post: GatsbyTypes.PostPageQuery["post"];
 }
 
-const PostContentTitle = ({ post }: PostContentTitleProps) => {
+const PostContentTitle = ({ post, readingTime }: PostContentTitleProps) => {
   return (
-    <Box
-      as="article"
-      width="100%"
-      position="relative"
-      display="flex"
-      flexDirection="column"
-      alignItems="baseline"
-      marginBottom={100}
-    >
+    <Flex width="100%" position="relative" flexDirection="column" alignItems="baseline">
       <Heading as="h1" fontSize={36} marginBottom="3" fontWeight={900}>
         {post?.frontmatter?.title}
       </Heading>
@@ -28,17 +21,17 @@ const PostContentTitle = ({ post }: PostContentTitleProps) => {
             <Badge fontSize="14px">{tag}</Badge>
           </Link>
         ))}
-        {/* <Badge fontSize="14px">{`${readingTime} minutes`}</Badge> */}
-        <Badge fontSize="14px">{`10 minutes`}</Badge>
+        <Text fontSize="14px">{readingTime}</Text>
       </Flex>
 
       <Box display="flex" width="100%" justifyContent="center" alignItems="center">
         <GatsbyImage
+          style={{ marginTop: "20px" }}
           image={post?.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!}
           alt={post?.frontmatter?.title!}
         />
       </Box>
-    </Box>
+    </Flex>
   );
 };
 

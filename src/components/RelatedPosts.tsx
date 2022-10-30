@@ -1,6 +1,7 @@
 import { Box, Grid, GridItem, Heading } from "@chakra-ui/react";
-import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
+
+import PostCard from "./PostCard";
 
 interface RelatedPostsProps {
   relatedPosts: GatsbyTypes.PostPageQuery["relatedPosts"];
@@ -8,18 +9,21 @@ interface RelatedPostsProps {
 
 const RelatedPosts = ({ relatedPosts }: RelatedPostsProps) => {
   return (
-    <Box marginBottom={100} marginTop={100}>
+    <Box marginTop="100px">
       <Heading as="h2" fontSize={36}>
-        Related Posts
+        관련 포스트
       </Heading>
-      <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+      <Grid mt="20px" templateColumns="repeat(2, 1fr)" gap={6}>
         {relatedPosts.nodes.map((post) => (
-          <GridItem w="100%" bg="blue.500" key={post?.frontmatter?.slug}>
-            <h1>{post?.frontmatter?.title}</h1>
-            <h1>{post?.frontmatter?.slug}</h1>
-            <GatsbyImage
-              image={post?.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!}
-              alt={post?.frontmatter?.title!}
+          <GridItem as="article" key={post?.frontmatter?.slug}>
+            <PostCard
+              title={post.frontmatter?.title!}
+              description={post.frontmatter?.description!}
+              slug={post.frontmatter?.slug!}
+              thumbnail={post.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!}
+              createdAt={post.frontmatter?.createdAt!}
+              updatedAt={post.frontmatter?.updatedAt!}
+              tags={post.frontmatter?.tags!}
             />
           </GridItem>
         ))}

@@ -1,4 +1,5 @@
 const path = require("path");
+const readingTime = require(`reading-time`);
 
 const postTemplate = path.resolve(`./src/templates/post.tsx`);
 const tagsTemplate = path.resolve(`./src/templates/tags.tsx`);
@@ -9,6 +10,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       allPosts: allMdx {
         nodes {
           id
+          body
           frontmatter {
             slug
             tags
@@ -35,6 +37,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       context: {
         tags: node.frontmatter.tags,
         id: node.id,
+        readingTime: readingTime(node.body),
       },
     });
   });

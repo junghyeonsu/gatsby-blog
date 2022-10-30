@@ -1,9 +1,11 @@
 import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { graphql } from "gatsby";
 import React from "react";
 
 import PostCard from "../components/PostCard";
 import Tags from "../components/Tags";
+import { commonMotion } from "../constants";
 
 export const query = graphql`
   query TagsPage($tag: String!) {
@@ -57,21 +59,23 @@ export default function TagsTemplate({ pageContext, data }: TagsProps) {
     >
       <Tags currentTag={pageContext.tag} />
       <Divider orientation="horizontal" marginTop="20px" />
-      <Grid as="section" templateColumns="repeat(2, 1fr)" marginTop="20px" gap={6}>
-        {data.allMdx.nodes.map((node) => (
-          <GridItem key={node.frontmatter?.slug} as="article">
-            <PostCard
-              title={node.frontmatter?.title!}
-              description={node.frontmatter?.description!}
-              slug={node.frontmatter?.slug!}
-              thumbnail={node.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!}
-              createdAt={node.frontmatter?.createdAt!}
-              updatedAt={node.frontmatter?.updatedAt!}
-              tags={node.frontmatter?.tags!}
-            />
-          </GridItem>
-        ))}
-      </Grid>
+      <motion.div {...commonMotion}>
+        <Grid as="section" templateColumns="repeat(2, 1fr)" marginTop="20px" gap={6}>
+          {data.allMdx.nodes.map((node) => (
+            <GridItem key={node.frontmatter?.slug} as="article">
+              <PostCard
+                title={node.frontmatter?.title!}
+                description={node.frontmatter?.description!}
+                slug={node.frontmatter?.slug!}
+                thumbnail={node.frontmatter?.thumbnail?.childImageSharp?.gatsbyImageData!}
+                createdAt={node.frontmatter?.createdAt!}
+                updatedAt={node.frontmatter?.updatedAt!}
+                tags={node.frontmatter?.tags!}
+              />
+            </GridItem>
+          ))}
+        </Grid>
+      </motion.div>
     </Box>
   );
 }

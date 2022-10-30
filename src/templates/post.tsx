@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import type { HeadFC } from "gatsby";
 import { graphql } from "gatsby";
 import React from "react";
@@ -11,11 +12,11 @@ export const query = graphql`
   query PostPage($id: String!, $tags: [String!]!) {
     post: mdx(id: { eq: $id }) {
       frontmatter {
-        createdAt
-        description
-        tags
         slug
         title
+        description
+        tags
+        createdAt
         updatedAt
         thumbnail {
           childImageSharp {
@@ -25,15 +26,18 @@ export const query = graphql`
       }
     }
     relatedPosts: allMdx(
-      filter: { frontmatter: { tags: { in: $tags } } }
+      filter: { frontmatter: { tags: { in: $tags } }, id: { ne: $id } }
       sort: { fields: frontmatter___createdAt, order: DESC }
       limit: 4
     ) {
       nodes {
         frontmatter {
-          tags
-          title
           slug
+          title
+          description
+          tags
+          createdAt
+          updatedAt
           thumbnail {
             childImageSharp {
               gatsbyImageData
@@ -48,29 +52,24 @@ export const query = graphql`
 interface PostTemplateProps {
   children: React.ReactNode;
   data: GatsbyTypes.PostPageQuery;
+  pageContext: {
+    readingTime: {
+      minutes: number;
+      text: string;
+      time: number;
+      words: number;
+    };
+  };
 }
 
-const PostTemplate: React.FC<PostTemplateProps> = ({ children, data }) => {
+const PostTemplate: React.FC<PostTemplateProps> = ({ children, data, pageContext }) => {
   return (
-    <main>
-      <PostLayout>
-        <section
-          style={{
-            maxWidth: "800px",
-            margin: "50px auto",
-            wordBreak: "keep-all",
-            overflowWrap: "break-word",
-            lineHeight: "1.7",
-            letterSpacing: "-0.04px",
-          }}
-        >
-          <PostContentTitle post={data.post} />
-          {children}
-          <RelatedPosts relatedPosts={data.relatedPosts} />
-          <Giscus />
-        </section>
-      </PostLayout>
-    </main>
+    <PostLayout>
+      <PostContentTitle readingTime={pageContext.readingTime.text} post={data.post} />
+      <Box marginTop="50px">{children}</Box>
+      <RelatedPosts relatedPosts={data.relatedPosts} />
+      <Giscus />
+    </PostLayout>
   );
 };
 

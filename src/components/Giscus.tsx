@@ -1,4 +1,4 @@
-import { useColorMode } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
 import React from "react";
 import { useCallback, useEffect } from "react";
 
@@ -37,7 +37,7 @@ const Giscus = (): JSX.Element => {
     LoadComments();
   }, [LoadComments]);
 
-  return <div className="giscus" id={COMMENTS_ID} />;
+  return <Box mt="100px" className="giscus" id={COMMENTS_ID} />;
 };
 
 export default Giscus;

@@ -1,4 +1,4 @@
-import { Badge, Box, Heading, Text, useColorMode } from "@chakra-ui/react";
+import { Badge, Box, Flex, Heading, Text, useColorMode } from "@chakra-ui/react";
 import { Link } from "gatsby";
 import type { IGatsbyImageData } from "gatsby-plugin-image";
 import { GatsbyImage } from "gatsby-plugin-image";
@@ -36,7 +36,7 @@ const PostCard = ({
     <Link to={`/posts/${slug}`}>
       <Box
         as="article"
-        boxShadow="sm"
+        boxShadow="rgb(0 0 0 / 4%) 0px 4px 16px 0px"
         transition="box-shadow 0.25s ease"
         _hover={{ boxShadow: "md", cursor: "pointer" }}
         borderRadius={2}
@@ -44,7 +44,17 @@ const PostCard = ({
         <Box display="block" as="span" width="100%" borderRadius={2}>
           <GatsbyImage image={thumbnail} alt={`${slug} cover image`} />
         </Box>
-        <Box minH={120} padding={2}>
+        <Flex direction="column" justifyContent="space-between" minH={130} padding={2}>
+          <Flex direction="column">
+            <Heading marginTop={2} fontSize={24} noOfLines={1}>
+              {title}
+            </Heading>
+
+            <Text fontSize={16} color={isDarkMode ? "whiteAlpha.600" : "gray.600"} noOfLines={2}>
+              {description}
+            </Text>
+          </Flex>
+
           <Box display="flex" columnGap="10px">
             <Badge fontSize={14}>{createdAt}</Badge>
             {tags?.map((tag) => (
@@ -58,15 +68,7 @@ const PostCard = ({
               </Badge>
             )}
           </Box>
-
-          <Heading marginTop={2} fontSize={24} noOfLines={1}>
-            {title}
-          </Heading>
-
-          <Text fontSize={16} color={isDarkMode ? "whiteAlpha.600" : "gray.600"} noOfLines={2}>
-            {description}
-          </Text>
-        </Box>
+        </Flex>
       </Box>
     </Link>
   );
