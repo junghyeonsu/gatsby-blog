@@ -8,7 +8,15 @@ interface TagsProps {
 
 export default function Tags({ currentTag }: TagsProps) {
   return (
-    <Flex as="nav" columnGap="10px" flexWrap="wrap" marginTop="20px" width="100%">
+    <Flex
+      as="nav"
+      columnGap="10px"
+      rowGap="10px"
+      flexWrap="wrap"
+      marginTop="20px"
+      padding={{ base: "0 20px", md: "0px" }}
+      width="100%"
+    >
       <StaticQuery
         query={graphql`
           query Tags {
@@ -26,8 +34,8 @@ export default function Tags({ currentTag }: TagsProps) {
             <>
               <Link to="/">
                 <Button
-                  backgroundColor={currentTag === "all" ? "green.300" : "none"}
-                  colorScheme={currentTag === "all" ? "green" : undefined}
+                  backgroundColor={currentTag === "all" ? "blue.400" : "none"}
+                  colorScheme={currentTag === "all" ? "blue" : undefined}
                 >
                   all ({data.allMdx.totalCount})
                 </Button>
@@ -40,8 +48,8 @@ export default function Tags({ currentTag }: TagsProps) {
                 return (
                   <Link key={tag} to={`/tags/${tag}`}>
                     <Button
-                      backgroundColor={currentTag === tag ? "green.300" : "none"}
-                      colorScheme={currentTag === tag ? "green" : undefined}
+                      backgroundColor={currentTag === tag ? "blue.400" : "none"}
+                      colorScheme={currentTag === tag ? "blue" : undefined}
                       key={tag}
                     >
                       {tag} ({totalCount})

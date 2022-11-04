@@ -54,7 +54,12 @@ const IndexPage = ({ data }: IndexPageProps) => {
       <Tags currentTag="all" />
       <Divider orientation="horizontal" marginTop="20px" />
       <motion.div {...commonMotion}>
-        <Grid as="section" templateColumns="repeat(2, 1fr)" marginTop="20px" gap={6}>
+        <Grid
+          as="section"
+          templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
+          margin={{ base: "20px", md: "20px 0px" }}
+          gap={6}
+        >
           {data.allPosts.nodes.map((node) => (
             <GridItem key={node.frontmatter?.slug} as="article">
               <PostCard

@@ -41,8 +41,19 @@ const PostCard = ({
         _hover={{ boxShadow: "md", cursor: "pointer" }}
         borderRadius={2}
       >
-        <Box display="block" as="span" width="100%" borderRadius={2}>
-          <GatsbyImage style={{ height: "240px" }} image={thumbnail} alt={`${slug} cover image`} />
+        <Box
+          display="block"
+          as="span"
+          width="100%"
+          height={{ base: "100%", md: "240px" }}
+          borderRadius={2}
+        >
+          <GatsbyImage
+            objectFit="cover"
+            style={{ height: "100%" }}
+            image={thumbnail}
+            alt={`${slug} cover image`}
+          />
         </Box>
         <Flex direction="column" justifyContent="space-between" minH={130} padding={2}>
           <Flex direction="column">

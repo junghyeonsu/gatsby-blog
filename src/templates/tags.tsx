@@ -60,7 +60,12 @@ export default function TagsTemplate({ pageContext, data }: TagsProps) {
       <Tags currentTag={pageContext.tag} />
       <Divider orientation="horizontal" marginTop="20px" />
       <motion.div {...commonMotion}>
-        <Grid as="section" templateColumns="repeat(2, 1fr)" marginTop="20px" gap={6}>
+        <Grid
+          as="section"
+          margin={{ base: "20px", md: "20px 0px" }}
+          templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
+          gap={6}
+        >
           {data.allMdx.nodes.map((node) => (
             <GridItem key={node.frontmatter?.slug} as="article">
               <PostCard

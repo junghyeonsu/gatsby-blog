@@ -32,8 +32,13 @@ const customComponents = {
       mt="16px"
       {...props}
       sx={{
+        // NOTE: 백틱안에 감싸진 텍스트 처리
         code: {
-          fontWeight: 700,
+          color: "gray.900",
+          backgroundColor: "gray.100",
+          borderRadius: "4px",
+          borderWidth: "1px 1px 3px",
+          padding: "2px",
         },
       }}
     />
