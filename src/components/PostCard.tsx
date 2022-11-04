@@ -42,7 +42,7 @@ const PostCard = ({
         borderRadius={2}
       >
         <Box display="block" as="span" width="100%" borderRadius={2}>
-          <GatsbyImage image={thumbnail} alt={`${slug} cover image`} />
+          <GatsbyImage style={{ height: "240px" }} image={thumbnail} alt={`${slug} cover image`} />
         </Box>
         <Flex direction="column" justifyContent="space-between" minH={130} padding={2}>
           <Flex direction="column">

@@ -87,7 +87,7 @@ updatedAt:
 
 그러면 해당 마크다운을 잘 보여주는 것이 필요합니다. 저는 [react-markdonw](https://github.com/remarkjs/react-markdown) 라이브러리를 이용해서 마크다운을 `HTML` 태그들로 파싱했습니다. 그리고 `react-markdown`의 장점으로 들어온 태그들을 자신이 직접 커스텀해서 보여줄 수도 있습니다.
 
-```ts
+```jsx
 const CustomComponents = {
   h1({ ...props }) {
     // 자신의 커스텀 h1 태그 작성

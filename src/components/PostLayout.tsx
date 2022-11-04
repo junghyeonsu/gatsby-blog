@@ -2,6 +2,9 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 import { MDXProvider } from "@mdx-js/react";
 import { motion } from "framer-motion";
 import React from "react";
+import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import { commonMotion } from "../constants";
 
@@ -23,7 +26,18 @@ const customComponents = {
 
   h4: (props: Object) => <Heading as="h4" fontSize={24} mt="20px" {...props} />,
 
-  p: (props: Object) => <Text fontSize={16} mt="16px" {...props} />,
+  p: (props: Object) => (
+    <Text
+      fontSize={16}
+      mt="16px"
+      {...props}
+      sx={{
+        code: {
+          fontWeight: 700,
+        },
+      }}
+    />
+  ),
 
   ol: (props: Object) => <Box as="ol" fontSize={16} mt="16px" listStylePos="inside" {...props} />,
   ul: (props: Object) => <Box as="ul" fontSize={16} mt="16px" listStylePos="inside" {...props} />,
@@ -60,6 +74,43 @@ const customComponents = {
       {...props}
     />
   ),
+
+  // TODO: 배열로 받아서 처리하도록 수정
+  pre: ({ ...props }) => {
+    const { children: preChildren } = props;
+    const { children, className } = preChildren.props as SyntaxHighlighterProps;
+
+    const match = /language-(\w+)/.exec(className || "") || "jsx";
+
+    // NOTE: jsx,1-2,7-8
+    const [, addLines, removeLines] = className?.split(",");
+    const splitedAdded = addLines?.split("-").map(Number);
+    const addedLines = addLines
+      ? Array.from({ length: splitedAdded[1] - splitedAdded[0] + 1 }, (_, i) => i + splitedAdded[0])
+      : [];
+    const removedLines = removeLines ? removeLines.split("-").map(Number) : [];
+
+    return (
+      <SyntaxHighlighter
+        style={vscDarkPlus}
+        showLineNumbers
+        wrapLines
+        lineProps={(lineNumber) => {
+          const style = { display: "block", backgroundColor: "transparent" };
+          if (addedLines.includes(lineNumber)) {
+            style.backgroundColor = "#afa62d69";
+          } else if (removedLines.includes(lineNumber)) {
+            style.backgroundColor = "#5c3232";
+          }
+          return { style };
+        }}
+        language={match[1]}
+        {...props}
+      >
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    );
+  },
 };
 
 export default function PostLayout({ children }: LayoutProps) {
