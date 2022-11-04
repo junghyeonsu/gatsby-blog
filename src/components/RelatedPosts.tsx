@@ -13,7 +13,7 @@ const RelatedPosts = ({ relatedPosts }: RelatedPostsProps) => {
       <Heading as="h2" fontSize={36}>
         관련 포스트
       </Heading>
-      <Grid mt="20px" templateColumns="repeat(2, 1fr)" gap={6}>
+      <Grid mt="20px" templateColumns={{ base: "repeat(1, 1fr)", sm: "repeat(2, 1fr)" }} gap={6}>
         {relatedPosts.nodes.map((post) => (
           <GridItem as="article" key={post?.frontmatter?.slug}>
             <PostCard
