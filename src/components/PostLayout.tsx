@@ -80,6 +80,10 @@ const customComponents = {
     />
   ),
 
+  img: (props: Object) => (
+    <Box as="img" marginTop="20px" marginBottom="20px" display="block" margin="0 auto" {...props} />
+  ),
+
   // TODO: 배열로 받아서 처리하도록 수정
   pre: ({ ...props }) => {
     const { children: preChildren } = props;
