@@ -1,12 +1,9 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { MDXProvider } from "@mdx-js/react";
-import { motion } from "framer-motion";
 import React from "react";
 import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
-
-import { commonMotion } from "../constants";
 
 {
   /* <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m15.538 18.999-.29 1.259a2.25 2.25 0 0 1-2.02 1.735l-.173.007h-2.111a2.25 2.25 0 0 1-2.147-1.577l-.046-.167-.29-1.257h7.077ZM12 2.001a7.25 7.25 0 0 1 7.25 7.25c0 2.136-.936 4.093-2.765 5.84a.25.25 0 0 0-.071.125l-.528 2.283H8.114l-.526-2.283a.25.25 0 0 0-.071-.124C5.687 13.344 4.75 11.387 4.75 9.25A7.25 7.25 0 0 1 12 2.001Z" fill="#fff"/></svg> */
@@ -125,9 +122,12 @@ const customComponents = {
 export default function PostLayout({ children }: LayoutProps) {
   return (
     <MDXProvider components={customComponents}>
-      <main
+      <Box
+        as="main"
+        maxWidth={{ base: "800px", xl: "1100px" }}
         style={{
-          maxWidth: "800px",
+          display: "flex",
+          position: "relative",
           margin: "50px auto",
           padding: "20px",
           wordBreak: "keep-all",
@@ -136,8 +136,8 @@ export default function PostLayout({ children }: LayoutProps) {
           letterSpacing: "-0.04px",
         }}
       >
-        <motion.article {...commonMotion}>{children}</motion.article>
-      </main>
+        {children}
+      </Box>
     </MDXProvider>
   );
 }

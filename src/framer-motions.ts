@@ -1,4 +1,4 @@
-export const commonMotion = {
+export const fadeInFromLeft = {
   initial: {
     opacity: 0,
     x: -10,

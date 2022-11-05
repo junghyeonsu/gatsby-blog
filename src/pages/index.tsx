@@ -6,7 +6,7 @@ import React from "react";
 
 import PostCard from "../components/PostCard";
 import Tags from "../components/Tags";
-import { commonMotion } from "../constants";
+import { fadeInFromLeft } from "../framer-motions";
 
 export const query = graphql`
   query IndexPage {
@@ -53,7 +53,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
     >
       <Tags currentTag="all" />
       <Divider orientation="horizontal" marginTop="20px" />
-      <motion.div {...commonMotion}>
+      <motion.div {...fadeInFromLeft}>
         <Grid
           as="section"
           templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}

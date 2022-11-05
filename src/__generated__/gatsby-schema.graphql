@@ -2230,6 +2230,7 @@ enum SiteFieldsEnum {
   pathPrefix
   polyfill
   siteMetadata___description
+  siteMetadata___siteUrl
   siteMetadata___title
   trailingSlash
 }
@@ -2607,11 +2608,13 @@ input SitePageSortInput {
 
 type SiteSiteMetadata {
   description: String
+  siteUrl: String
   title: String
 }
 
 input SiteSiteMetadataFilterInput {
   description: StringQueryOperatorInput
+  siteUrl: StringQueryOperatorInput
   title: StringQueryOperatorInput
 }
 

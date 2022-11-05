@@ -1,8 +1,9 @@
 const path = require(`path`);
 
 const SITE_METADATA = Object.freeze({
-  title: "junghyeonsu.dev",
-  siteUrl: process.env.URL, // TODO:
+  title: "정현수의 기술 블로그",
+  description: "주니어 프론트엔드 개발자 정현수의 기술 블로그입니다.",
+  siteUrl: process.env.URL || "https://junghyeonsu-dev.vercel.app",
 });
 
 const wrapESMPlugin = (name) =>
@@ -97,6 +98,64 @@ module.exports = {
             "https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css",
           ],
         },
+      },
+    },
+    `gatsby-plugin-advanced-sitemap`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.nodes.map((node) => {
+                return Object.assign({}, node.frontmatter, {
+                  title: node.frontmatter.title,
+                  description: node.frontmatter.description,
+                  pubDate: node.frontmatter.createdAt,
+                  url: site.siteMetadata.siteUrl + node.frontmatter.slug,
+                  guid: site.siteMetadata.siteUrl + node.frontmatter.slug,
+                  custom_elements: [{ "content:encoded": node.body }],
+                });
+              });
+            },
+            query: `
+              {
+                allMdx(sort: {fields: frontmatter___createdAt, order: DESC}) {
+                  nodes {
+                    frontmatter {
+                      title
+                      createdAt
+                      description
+                      slug
+                    }
+                    body
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Junghyeonsu blog's RSS Feed",
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "G-6P098S0HE9",
+        head: true,
       },
     },
   ],

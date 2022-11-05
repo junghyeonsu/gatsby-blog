@@ -5,7 +5,7 @@ import React from "react";
 
 import PostCard from "../components/PostCard";
 import Tags from "../components/Tags";
-import { commonMotion } from "../constants";
+import { fadeInFromLeft } from "../framer-motions";
 
 export const query = graphql`
   query TagsPage($tag: String!) {
@@ -59,7 +59,7 @@ export default function TagsTemplate({ pageContext, data }: TagsProps) {
     >
       <Tags currentTag={pageContext.tag} />
       <Divider orientation="horizontal" marginTop="20px" />
-      <motion.div {...commonMotion}>
+      <motion.div {...fadeInFromLeft}>
         <Grid
           as="section"
           margin={{ base: "20px", md: "20px 0px" }}

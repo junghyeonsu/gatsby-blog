@@ -1,4 +1,5 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import type { HeadFC } from "gatsby";
 import { graphql } from "gatsby";
 import React from "react";
@@ -7,6 +8,8 @@ import Giscus from "../components/Giscus";
 import PostContentTitle from "../components/PostContentTitle";
 import PostLayout from "../components/PostLayout";
 import RelatedPosts from "../components/RelatedPosts";
+import TableOfContents from "../components/TableOfContents";
+import { fadeInFromLeft } from "../framer-motions";
 
 export const query = graphql`
   query PostPage($id: String!, $tags: [String!]!) {
@@ -24,6 +27,7 @@ export const query = graphql`
           }
         }
       }
+      tableOfContents
     }
     relatedPosts: allMdx(
       filter: { frontmatter: { tags: { in: $tags } }, id: { ne: $id } }
@@ -65,10 +69,17 @@ interface PostTemplateProps {
 const PostTemplate: React.FC<PostTemplateProps> = ({ children, data, pageContext }) => {
   return (
     <PostLayout>
-      <PostContentTitle readingTime={pageContext.readingTime.text} post={data.post} />
-      <Box marginTop="50px">{children}</Box>
-      <RelatedPosts relatedPosts={data.relatedPosts} />
-      <Giscus />
+      <motion.article {...fadeInFromLeft}>
+        <Flex direction="column" width={{ base: "100%", xl: "800px" }}>
+          <PostContentTitle readingTime={pageContext.readingTime.text} post={data.post} />
+          <Box marginTop="50px">{children}</Box>
+          <RelatedPosts relatedPosts={data.relatedPosts} />
+          <Giscus />
+        </Flex>
+      </motion.article>
+      <motion.div {...fadeInFromLeft}>
+        <TableOfContents tableOfContents={data.post?.tableOfContents} />
+      </motion.div>
     </PostLayout>
   );
 };

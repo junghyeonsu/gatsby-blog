@@ -24,9 +24,6 @@ const PostCard = ({
   updatedAt,
 }: PostCardProps) => {
   const { colorMode } = useColorMode();
-  // const mediaQuery = useMediaQuery();
-
-  console.log("updatedAt", updatedAt);
 
   const isDarkMode = useMemo(() => colorMode === "dark", [colorMode]);
   const diffMs = useMemo(() => new Date().getTime() - new Date(createdAt).getTime(), [createdAt]);
@@ -36,10 +33,11 @@ const PostCard = ({
     <Link to={`/posts/${slug}`}>
       <Box
         as="article"
-        boxShadow="rgb(0 0 0 / 4%) 0px 4px 16px 0px"
+        boxShadow="md"
         transition="box-shadow 0.25s ease"
-        _hover={{ boxShadow: "md", cursor: "pointer" }}
-        borderRadius={2}
+        _hover={{ boxShadow: "lg", cursor: "pointer" }}
+        borderRadius="6px"
+        overflow="hidden"
       >
         <Box
           display="block"
@@ -67,7 +65,7 @@ const PostCard = ({
           </Flex>
 
           <Box display="flex" columnGap="10px">
-            <Badge fontSize={14}>{createdAt}</Badge>
+            <Badge fontSize={14}>{updatedAt ? `${updatedAt} (updated)` : createdAt}</Badge>
             {tags?.map((tag) => (
               <Badge key={tag} fontSize={14}>
                 {tag}
